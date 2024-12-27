@@ -1,0 +1,12 @@
+<app-header
+  [user]="user"
+  [selectedDashboardPage]="selectedDashboardPage"
+  (onSelectedDashboardChange)="onSelectedDashboardChange($event)"
+></app-header>
+<app-sidebar></app-sidebar>
+{{ selectedDashboardPage }}
+<div>
+  @if(selectedDashboardPage == 'home'){ <app-home></app-home>} @else if
+  (selectedDashboardPage == 'about') {<app-about></app-about>} @else if
+  (selectedDashboardPage == 'contact') {<app-contact></app-contact>}
+</div>
