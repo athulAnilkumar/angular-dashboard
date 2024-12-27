@@ -1,3 +1,12 @@
 <div>
-  <span> </span>
+  @if (dataLoading == true) {
+  <p>Loading.........</p>
+  } @else {
+  <span *ngFor="let data of aboutData">
+    <p>userID: {{ data.userId }}</p>
+    <p>id: {{ data.id }}</p>
+    <p>title: {{ data.title }}</p>
+    <p>body: {{ data.body }}</p>
+  </span>
+  }
 </div>
