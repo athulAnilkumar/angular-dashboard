@@ -1,0 +1,13 @@
+<h1>Gallery</h1>
+
+<div>
+  <select (change)="onCategorySelect($event)">
+    @for(option of wallpapersCategories(); track option.index){
+    <option>{{ option }}</option>
+    }
+  </select>
+  @if(wallpapers().length){ @for(image of wallpapers(); track image.imageId){
+  <img [src]="image.thumbnail" alt="{{ image.imageId }}" />
+  <label>{{ image.imageName }}</label>
+  } } @else { Loading.... }
+</div>

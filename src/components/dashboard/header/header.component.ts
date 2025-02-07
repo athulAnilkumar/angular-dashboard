@@ -37,4 +37,8 @@ export class HeaderComponent {
   onProfileClick = () => {
     this.route.navigateByUrl('/profile');
   };
+
+  onGalleryClick = () => {
+    this.route.navigateByUrl('/gallery');
+  };
 }
