@@ -4,7 +4,6 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { HomeComponent } from '../home/home.component';
 import { AboutComponent } from '../about/about.component';
 import { ContactComponent } from '../contact/contact.component';
-import { DataService } from '../../services/about-data-service/data.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,7 +16,6 @@ import { DataService } from '../../services/about-data-service/data.service';
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css',
-  providers: [DataService],
 })
 export class DashboardComponent {
   user = 'Athul';

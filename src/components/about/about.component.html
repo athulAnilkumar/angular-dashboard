@@ -1,12 +1,8 @@
 <div>
-  @if (dataLoading == true) {
-  <p>Loading.........</p>
-  } @else {
-  <span *ngFor="let data of aboutData">
-    <p>userID: {{ data.userId }}</p>
-    <p>id: {{ data.id }}</p>
-    <p>title: {{ data.title }}</p>
-    <p>body: {{ data.body }}</p>
-  </span>
+  @for(data of aboutData; track data.id){
+  <p>User ID: {{ data.userId }}</p>
+  <p>ID: {{ data.id }}</p>
+  <p>Title: {{ data.title }}</p>
+  <p>Body: {{ data.body }}</p>
   }
 </div>

@@ -33,4 +33,8 @@ export class HeaderComponent {
     this.selectedDashboardPage = 'contact';
     this.onSelectedDashboardChange.emit(this.selectedDashboardPage);
   }
+
+  onProfileClick = () => {
+    this.route.navigateByUrl('/profile');
+  };
 }

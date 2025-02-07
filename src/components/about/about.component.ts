@@ -1,25 +1,25 @@
-import { Component, OnInit } from '@angular/core';
-import { DataService } from '../../services/about-data-service/data.service';
-import { HttpClientModule } from '@angular/common/http';
-import { CommonModule } from '@angular/common';
+import { Component, inject, OnInit } from '@angular/core';
+import { AboutServiceService } from '../../services/about-service.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-about',
-  imports: [HttpClientModule, CommonModule],
+  imports: [],
   templateUrl: './about.component.html',
   styleUrl: './about.component.css',
+  providers: [HttpClient],
 })
 export class AboutComponent implements OnInit {
+  aboutService = inject(AboutServiceService);
   aboutData: any = [];
-  dataLoading: boolean = false;
-
-  constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
-    this.dataLoading = true;
-    this.dataService.getDataService().subscribe((data) => {
+    this.aboutService.aboutService().subscribe((data: any) => {
       this.aboutData = data;
-      this.dataLoading = false;
     });
   }
+
+  // constructor(private aboutService: AboutServiceService) {
+  //   console.log(this.aboutData);
+  // }
 }
