@@ -16,11 +16,12 @@ export class LoginComponent implements OnInit {
   constructor(private route: Router) {}
 
   ngOnInit(): void {
-    console.log('LoginComponent initialized');
+    localStorage.setItem('token', '');
   }
 
   onLoginBtnClick() {
     if (this.username === 'test' && this.password === 'test') {
+      localStorage.setItem('token', 'helloThisIsLoginToken');
       this.route.navigateByUrl('/dashboard');
     }
   }
