@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal, effect } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AboutServiceService } from '../../services/about-service.service';
 
@@ -17,6 +17,7 @@ export class ContactComponent implements OnInit {
     address: '',
     file: null,
   });
+  submitted = signal<boolean>(false);
 
   mainData: any = signal([]);
 
@@ -26,7 +27,18 @@ export class ContactComponent implements OnInit {
     });
   }
 
-  // constructor(private dataService: AboutServiceService) {}
+  constructor() {
+    effect(() => {
+      if (this.submitted() === true) {
+        alert(
+          `Submitted successfully name: ${this.details().name} , age: ${
+            this.details().age
+          }, email: ${this.details().email} address: ${this.details().address}`
+        );
+        this.submitted.set(false);
+      }
+    });
+  }
 
   onNameChange = (event: any) => {
     this.details.set({ ...this.details(), name: event.target.value });
@@ -76,10 +88,6 @@ export class ContactComponent implements OnInit {
   };
 
   onSubmitClick = () => {
-    alert(
-      `Submitted successfully name: ${this.details().name} , age: ${
-        this.details().age
-      }, email: ${this.details().email} address: ${this.details().address}`
-    );
+    this.submitted.set(true);
   };
 }
